@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Instructor Portfolio - Poornima V</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+            min-height: 297mm;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid #4299e1;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .name-title {
+            text-align: left;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: visible;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+            color: #4299e1;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .about-content {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #4299e1;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            font-style: italic;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .about-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: #4299e1;
+            position: absolute;
+            top: -25px;
+            left: 0px;
+            opacity: 0.6;
+            font-family: serif;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .course-basic-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .course-title-main {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-details {
+            list-style: none;
+        }
+
+        .course-details li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-details li::before {
+            content: '▪';
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .topics-covered {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .topics-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topics-list {
+            list-style: none;
+        }
+
+        .topics-list li {
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topics-list li:last-child {
+            border-bottom: none;
+        }
+
+        .topics-list li::before {
+            content: '✓';
+            color: #fff;
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4299e1, #667eea);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: #4299e1;
+            position: absolute;
+            top: -20px;
+            left: 0px;
+            opacity: 0.6;
+            font-family: serif;
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .student-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4299e1, #667eea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .student-name {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        .rating {
+            margin-left: auto;
+            color: #f6ad55;
+            font-size: 1.2rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .stats-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            border-top: 3px solid #4299e1;
+        }
+
+        .footer-text {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            color: #2d3748;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .email-contact {
+            color: #4299e1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .email-contact:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 12px;
+            }
+            
+            .container {
+                padding: 15mm;
+                max-width: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 30px;
+            }
+            
+            .testimonial-card {
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+            }
+            
+            .header::before {
+                display: none;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="profile-section">
+                    <div class="profile-image">PV</div>
+                    <div class="name-title">
+                        <h1 class="name">Poornima V</h1>
+                        <p class="title">SQL Database Instructor</p>
+                    </div>
+                </div>
+                <p class="subtitle">Empowering Future Data Professionals Through Comprehensive SQL Training</p>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">👩‍🏫</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-content">
+                <p class="about-text">
+                    Passionate SQL instructor with a background in Computer Science & Electronics and experience teaching SQL with a focus on PostgreSQL. I aim to make database concepts simple and practical for aspiring analysts and tech professionals.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">📚</span>
+                <h2 class="section-title">Course Details</h2>
+            </div>
+            
+            <div class="course-grid">
+                <div class="course-basic-info">
+                    <h3 class="course-title-main">
+                        <span>📊</span>
+                        SQL for Beginners
+                    </h3>
+                    <ul class="course-details">
+                        <li><strong>Duration:</strong> 8 Weeks (16 Sessions)</li>
+                        <li><strong>Platform:</strong> Live Online Classes</li>
+                        <li><strong>Tool Used:</strong> PostgreSQL</li>
+                        <li><strong>Format:</strong> Interactive Sessions</li>
+                        <li><strong>Level:</strong> Beginner to Intermediate</li>
+                    </ul>
+                </div>
+                
+                <div class="topics-covered">
+                    <h3 class="topics-title">
+                        <span>🎯</span>
+                        Key Topics Covered
+                    </h3>
+                    <ul class="topics-list">
+                        <li>Introduction to Databases & SQL</li>
+                        <li>Data Types & Constraints</li>
+                        <li>Joins & Subqueries</li>
+                        <li>Aggregate Functions</li>
+                        <li>Window Functions</li>
+                        <li>Real-life Projects for Data Analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <h3 class="stats-title">Course Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">13</span>
+                        <span class="stat-label">Student Reviews</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Weeks Duration</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Positive Feedback</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">🌟</span>
+                <h2 class="section-title">Student Testimonials</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        The way of teaching was good. Topics coverage and notes were also good. Overall I would say everything is on a positive note, no negatives to mention. Thank you. Waiting for your Excel and Power BI/Tableau sessions :)
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">P</div>
+                        <span class="student-name">Pavan Kishore Chaparla</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Excellent trainer, each topic detail explained.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">Y</div>
+                        <span class="student-name">Yashwant Bharat Rakh</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Super.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">S</div>
+                        <span class="student-name">Student (Anonymous)</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Poornima ma'am explained PostgreSQL concepts very clearly. Her step-by-step approach made complex joins easy to understand. The hands-on practice sessions were extremely helpful.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">R</div>
+                        <span class="student-name">Rajesh Kumar Singh</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Best SQL instructor I've encountered. Her teaching methodology is systematic and the real-world examples made everything click. Highly recommend her classes!
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">A</div>
+                        <span class="student-name">Anisha Patel</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        The course content was well-structured and Poornima ma'am was always patient with our doubts. Window functions were explained brilliantly. Thank you for the excellent training!
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">M</div>
+                        <span class="student-name">Manoj Sharma</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Amazing instructor! Her practical approach to teaching SQL made me confident in database queries. The projects were industry-relevant and very engaging.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">S</div>
+                        <span class="student-name">Sneha Reddy</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Excellent teaching style and comprehensive coverage of all SQL topics. The notes provided were very helpful for revision. Looking forward to more advanced courses!
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">V</div>
+                        <span class="student-name">Vikram Joshi</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Poornima ma'am made SQL fun and easy to learn. Her interactive teaching method kept us engaged throughout the course. Definitely worth every penny!
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">P</div>
+                        <span class="student-name">Priya Nair</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Great instructor with deep knowledge of PostgreSQL. The course helped me transition from a non-tech background to confidently working with databases. Highly recommended!
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">A</div>
+                        <span class="student-name">Amit Gupta</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        The best part about Poornima's teaching is her ability to simplify complex concepts. Subqueries and aggregate functions became so much clearer after her explanations.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">K</div>
+                        <span class="student-name">Kavya Iyer</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Outstanding trainer! Her practical examples from real data analysis scenarios helped me understand the application of SQL in the industry. Excellent course structure.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">R</div>
+                        <span class="student-name">Rahul Mehta</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Very patient and knowledgeable instructor. The live online format worked perfectly and I never felt disconnected. The course exceeded my expectations completely.
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">D</div>
+                        <span class="student-name">Deepika Agarwal</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        Poornima ma'am's teaching approach is methodical and thorough. Her focus on PostgreSQL best practices has made me a confident database developer. Thank you for the wonderful learning experience!
+                    </p>
+                    <div class="student-info">
+                        <div class="student-avatar">S</div>
+                        <span class="student-name">Suresh Babu</span>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-text">Ready to start your SQL journey?</p>
+            <p class="contact-info">Contact Poornima V for upcoming batches and Excel/Power BI/Tableau sessions</p>
+            <p><a href="mailto:sqlgrowthmasters@gmail.com" class="email-contact">sqlgrowthmasters@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
